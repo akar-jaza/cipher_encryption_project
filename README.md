@@ -23,6 +23,11 @@ To get started with the project, follow these steps:
 <img src="https://github.com/user-attachments/assets/6131cf43-14af-4d91-a4d0-62c8475f03a4" alt="Screenshot 2" width="200" height="auto" /> <br>
 > This screenshot shows the result of the encoding, displayed in a modal bottom sheet.
 
+### Screenshot 3
+<img src="https://github.com/user-attachments/assets/13a39e40-dd3c-473d-b100-cafc1ea8793a" alt="Screenshot 2" width="200" height="auto" /> <br>
+> you can also decode an encoded text, displayed in a modal bottom sheet.
+
+
 ### Prerequisites
 
 - Flutter SDK installed. Follow the installation guide on the official Flutter website: https://flutter.dev/docs/get-started/install
