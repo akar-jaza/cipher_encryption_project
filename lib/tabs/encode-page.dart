@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
@@ -40,20 +39,20 @@ class _EncodePageState extends State<EncodePage> {
               labelText: 'Plain Text',
               showAlphabet: false,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             inputField(
               controller: getAlphabetController,
               icon: Icons.abc,
               labelText: 'Alphabet',
               showAlphabet: true,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             inputField(
               controller: getShiftController,
               icon: Icons.swap_vert,
               labelText: 'Shift',
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Row(
               children: [
                 Expanded(
@@ -69,7 +68,7 @@ class _EncodePageState extends State<EncodePage> {
                         ColorScheme.fromSeed(seedColor: Colors.blue).onPrimary,
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Encode",
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -78,7 +77,7 @@ class _EncodePageState extends State<EncodePage> {
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             footer()
           ],
         ),
