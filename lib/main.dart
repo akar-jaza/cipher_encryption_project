@@ -7,10 +7,9 @@ import 'package:flutter/services.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: ColorScheme.fromSeed(seedColor: Colors.blue)
-        .surface, // Set the color you want
-    systemNavigationBarIconBrightness:
-        Brightness.light, // Choose light or dark icons
+    systemNavigationBarColor:
+        ColorScheme.fromSeed(seedColor: Colors.blue).surface,
+    systemNavigationBarIconBrightness: Brightness.light,
   ));
   runApp(const MyApp());
 }
@@ -18,7 +17,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

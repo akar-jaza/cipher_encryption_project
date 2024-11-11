@@ -18,14 +18,15 @@ class _EncodePageState extends State<EncodePage> {
   String encodeResult = '';
 
   @override
-  Widget build(BuildContext context) {
-    void dispose() {
-      getPlainTextController.dispose();
-      getAlphabetController.dispose();
-      getShiftController.dispose();
-      super.dispose();
-    }
+  void dispose() {
+    getPlainTextController.dispose();
+    getAlphabetController.dispose();
+    getShiftController.dispose();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding:
