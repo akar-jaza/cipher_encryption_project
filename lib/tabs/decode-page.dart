@@ -1,6 +1,8 @@
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
+import 'package:cipher_encryption/model/logic-implementation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DecodePage extends StatefulWidget {
   const DecodePage({super.key});
@@ -85,29 +87,13 @@ class _DecodePageState extends State<DecodePage> {
 
   void encodeText(BuildContext context) {
     return setState(() {
-      cipherResult = decodCipherLogic(
-        encodedText: getPlainTextController.text,
+      cipherResult = CipherHandler.cipherLogic(
+        text: getPlainTextController.text,
         alphabet: getAlphabetController.text,
         shift: getShiftController.text,
       );
       _showModalBottomSheet(context, result: cipherResult);
     });
-  }
-
-  String decodCipherLogic({
-    required String encodedText,
-    required String alphabet,
-    required String shift,
-  }) {
-    int castShift = int.tryParse(shift) ?? 0;
-
-    List<String> shiftedLetters = [];
-    for (var i = 0; i < encodedText.length; i++) {
-      int shiftedIndex =
-          ((alphabet.indexOf(encodedText[i]) - castShift) % alphabet.length);
-      shiftedLetters.add(alphabet[shiftedIndex]);
-    }
-    return cipherResult = shiftedLetters.join();
   }
 }
 
@@ -130,18 +116,30 @@ void _showModalBottomSheet(BuildContext context, {required String result}) {
                   ),
                 ),
                 Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        result,
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: ColorScheme.fromSeed(seedColor: Colors.blue)
-                              .primary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          textAlign: TextAlign.center,
+                          result,
+                          style: TextStyle(
+                            fontSize: 50,
+                            color: ColorScheme.fromSeed(seedColor: Colors.blue)
+                                .primary,
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 20),
+                        IconButton(
+                          onPressed: () async {
+                            await Clipboard.setData(
+                                ClipboardData(text: result));
+                          },
+                          icon: const Icon(Icons.copy),
+                          iconSize: 30,
+                        ),
+                      ],
                     ),
                   ),
                 ),

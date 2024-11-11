@@ -83,13 +83,11 @@ class Tabs extends StatefulWidget {
 class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TabBarView(
-        children: const [
-          EncodePage(),
-          DecodePage(),
-        ],
-      ),
+    return TabBarView(
+      children: const [
+        EncodePage(),
+        DecodePage(),
+      ],
     );
   }
 }

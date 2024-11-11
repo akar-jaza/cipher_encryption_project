@@ -1,6 +1,8 @@
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
+import 'package:cipher_encryption/model/logic-implementation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class EncodePage extends StatefulWidget {
   const EncodePage({super.key});
@@ -87,29 +89,13 @@ class _EncodePageState extends State<EncodePage> {
 
   void encodeText(BuildContext context) {
     return setState(() {
-      encodeResult = implementCipherLogic(
-        plainText: getPlainTextController.text,
+      encodeResult = CipherHandler.cipherLogic(
+        text: getPlainTextController.text,
         alphabet: getAlphabetController.text,
         shift: getShiftController.text,
       );
       _showModalBottomSheet(context, cipherResult: encodeResult);
     });
-  }
-
-  String implementCipherLogic({
-    required String plainText,
-    required String alphabet,
-    required String shift,
-  }) {
-    int castShift = int.tryParse(shift) ?? 0;
-
-    List<String> shiftedLetters = [];
-    for (var i = 0; i < plainText.length; i++) {
-      int shiftedIndex =
-          ((alphabet.indexOf(plainText[i]) + castShift) % alphabet.length);
-      shiftedLetters.add(alphabet[shiftedIndex]);
-    }
-    return encodeResult = shiftedLetters.join();
   }
 }
 
@@ -133,18 +119,30 @@ void _showModalBottomSheet(BuildContext context,
                   ),
                 ),
                 Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        cipherResult,
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: ColorScheme.fromSeed(seedColor: Colors.blue)
-                              .primary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          textAlign: TextAlign.center,
+                          cipherResult,
+                          style: TextStyle(
+                            fontSize: 50,
+                            color: ColorScheme.fromSeed(seedColor: Colors.blue)
+                                .primary,
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 20),
+                        IconButton(
+                          onPressed: () async {
+                            await Clipboard.setData(
+                                ClipboardData(text: cipherResult));
+                          },
+                          icon: const Icon(Icons.copy),
+                          iconSize: 30,
+                        ),
+                      ],
                     ),
                   ),
                 ),
