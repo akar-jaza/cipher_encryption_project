@@ -18,7 +18,6 @@ To get started with the project, follow these steps:
 ### Screenshot 1
 <img src="https://github.com/user-attachments/assets/53f0917b-782c-431c-aa0f-d4b997aa8576" alt="Screenshot 1" width="200" height="auto" /> <br>
 > This is the main screen where users can input the plaintext, alphabet, and shift value for encoding.
-<br>
 
 ### Screenshot 2
 <img src="https://github.com/user-attachments/assets/6131cf43-14af-4d91-a4d0-62c8475f03a4" alt="Screenshot 2" width="200" height="auto" /> <br>
