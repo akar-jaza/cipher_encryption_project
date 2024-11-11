@@ -16,13 +16,12 @@ To get started with the project, follow these steps:
 ## Screenshots
 
 ### Screenshot 1
-<img src="![Screenshot_1731348017](https://github.com/user-attachments/assets/35ff30a3-4b62-4e96-a454-2f53299b6210)" alt="Screenshot 1" width="400" height="auto" />
+<img src="https://github.com/user-attachments/assets/35ff30a3-4b62-4e96-a454-2f53299b6210" alt="Screenshot 1" width="400" height="auto" />
 > This is the main screen where users can input the plaintext, alphabet, and shift value for encoding.
 
 ### Screenshot 2
-<img src="![Screenshot_1731348111](https://github.com/user-attachments/assets/6131cf43-14af-4d91-a4d0-62c8475f03a4)" alt="Screenshot 2" width="400" height="auto" />
+<img src="https://github.com/user-attachments/assets/6131cf43-14af-4d91-a4d0-62c8475f03a4" alt="Screenshot 2" width="400" height="auto" />
 > This screenshot shows the result of the encoding, displayed in a modal bottom sheet.
-
 
 ### Prerequisites
 
