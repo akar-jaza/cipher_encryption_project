@@ -1,4 +1,3 @@
-
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +48,7 @@ class _DecodePageState extends State<DecodePage> {
               controller: getShiftController,
               icon: Icons.swap_vert,
               labelText: 'Shift',
+              inputTypeIsNumber: true,
             ),
             const SizedBox(height: 30),
             Row(

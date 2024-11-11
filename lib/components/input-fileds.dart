@@ -5,9 +5,13 @@ Row inputField({
   required IconData icon,
   String labelText = '',
   bool showAlphabet = false,
+  bool inputTypeIsNumber = false,
 }) {
   if (showAlphabet && controller.text.isEmpty) {
     controller.text = "abcdefghijklmnopqrstuvwxyz";
+  }
+  if (inputTypeIsNumber) {
+    TextInputType.number;
   }
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -20,6 +24,8 @@ Row inputField({
       const SizedBox(width: 20),
       Expanded(
         child: TextField(
+          keyboardType:
+              inputTypeIsNumber ? TextInputType.number : TextInputType.text,
           controller: controller,
           maxLines: null,
           onTapOutside: (event) {
