@@ -1,6 +1,6 @@
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
-import 'package:cipher_encryption/model/logic-implementation.dart';
+import 'package:cipher_encryption/model/cipher_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -58,7 +58,7 @@ class _DecodePageState extends State<DecodePage> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      encodeText(context);
+                      decodeResult(context);
                     },
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(
@@ -85,13 +85,15 @@ class _DecodePageState extends State<DecodePage> {
     );
   }
 
-  void encodeText(BuildContext context) {
+  void decodeResult(BuildContext context) {
+    CipherHandler cipherHandler = CipherHandler(
+      text: getPlainTextController.text,
+      alphabet: getAlphabetController.text,
+      shift: getShiftController.text,
+      isEncode: false,
+    );
     return setState(() {
-      cipherResult = CipherHandler.cipherLogic(
-        text: getPlainTextController.text,
-        alphabet: getAlphabetController.text,
-        shift: getShiftController.text,
-      );
+      cipherResult = cipherHandler.implementCipher();
       _showModalBottomSheet(context, result: cipherResult);
     });
   }
@@ -101,7 +103,7 @@ void _showModalBottomSheet(BuildContext context, {required String result}) {
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(12.0),

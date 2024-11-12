@@ -1,6 +1,6 @@
 import 'package:cipher_encryption/components/footer.dart';
 import 'package:cipher_encryption/components/input-fileds.dart';
-import 'package:cipher_encryption/model/logic-implementation.dart';
+import 'package:cipher_encryption/model/cipher_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -88,12 +88,14 @@ class _EncodePageState extends State<EncodePage> {
   }
 
   void encodeText(BuildContext context) {
+    CipherHandler cipherHandler = CipherHandler(
+      text: getPlainTextController.text,
+      alphabet: getAlphabetController.text,
+      shift: getShiftController.text,
+      isEncode: true,
+    );
     return setState(() {
-      encodeResult = CipherHandler.cipherLogic(
-        text: getPlainTextController.text,
-        alphabet: getAlphabetController.text,
-        shift: getShiftController.text,
-      );
+      encodeResult = cipherHandler.implementCipher();
       _showModalBottomSheet(context, cipherResult: encodeResult);
     });
   }
@@ -104,7 +106,7 @@ void _showModalBottomSheet(BuildContext context,
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
